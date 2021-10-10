@@ -1,0 +1,74 @@
+div {
+  border: 1px solid #000000;
+}
+
+.container {
+  padding: 40px;
+}
+
+.main {
+  padding: 20px;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.main__left {
+  width: 65%;
+  margin-right: 5%;
+}
+
+.main__right {
+  width: 30%;
+}
+
+.main__right .window {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.main__right .window__number {
+  font-size: 30px;
+  padding: 15px 25px;
+  margin-right: 20px;
+}
+
+.main__right .caluclater {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.btn-number {
+  padding: 10px;
+  width: 40px;
+  text-align: center;
+}
+
+.btn-number:nth-child(3n+1), .btn-number:nth-child(3n+2) {
+  margin-right: 20px;
+}
+
+.button {
+  font-size: 30px;
+  padding: 15px 20px;
+  margin-top: 30px;
+}
+/*# sourceMappingURL=index.css.map */
