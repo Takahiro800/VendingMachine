@@ -1,3 +1,7 @@
+h2 {
+  margin-bottom: 20px;
+}
+
 div {
   border: 1px solid #000000;
 }
@@ -17,6 +21,8 @@ div {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 0 auto;
+  background-color: yellow;
 }
 
 .main__img {
@@ -102,6 +108,8 @@ div {
   padding: 10px;
   width: 40px;
   text-align: center;
+  border-radius: 10px;
+  margin: 5px;
 }
 
 .btn-number:nth-child(3n+1), .btn-number:nth-child(3n+2) {
@@ -165,5 +173,13 @@ button {
     width: 0%;
     opacity: 0;
   }
+}
+
+.warning {
+  padding: 30px;
+  font-size: 20px;
+  color: #C01A1A;
+  font-weight: bold;
+  text-align: center;
 }
 /*# sourceMappingURL=index.css.map */
