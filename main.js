@@ -38,7 +38,6 @@ main.classList.add('main__img');
 extra.classList.add('extra__img');
 warning.classList.add('warning');
 
-// main.append(itemBox[0]);
 main.style.backgroundImage = 'url(' + itemBox[0].imgUrl + ')';
 main.setAttribute('data-index', '1');
 extra.style.backgroundImage = 'url(' + itemBox[1].imgUrl + ')';
@@ -57,24 +56,46 @@ const target = document.getElementById('target');
 target.append(sliderShow);
 target.append(warning);
 
-function slideJump(steps, animationType) {
-  let index = parseInt(main.getAttribute('data-index'));
-  let currentElement = itemBox[index];
+const numberBtns = document.querySelectorAll('.btn-number');
+const meter = document.getElementById('meter');
+const clear = document.getElementById('clear');
+const submit = document.getElementById('submit');
+submit.disabled = true;
+meter.innerHTML = 1;
 
-  index += steps;
+// 番号のボタンの設定
+numberBtns.forEach((btn) => {
+  btn.addEventListener('click', function () {
+    meter.innerHTML += btn.innerHTML;
+  });
+});
 
-  if (index < 0) {
-    index = itemBox.length - 1;
-  } else if (index >= itemBox.length) {
-    index = 0;
+clear.addEventListener('click', function () {
+  changeDisabledBtn();
+  meter.innerHTML = '';
+  warning.innerHTML = '';
+});
+
+submit.addEventListener('click', function () {
+  changeDisabledBtn();
+  const currentIndex = parseInt(main.getAttribute('data-index'));
+  const nextIndex = parseInt(meter.innerHTML);
+
+  if (nextIndex > itemBox.length) {
+    warning.innerHTML = `現在の登録数は${itemBox.length}です`;
+    console.log(`現在の登録数は${itemBox.length}です`);
+    return;
   }
 
-  let nextElement = itemBox[index];
-  main.setAttribute('data-index', index.toString());
-  animateMain(currentElement, nextElement, animationType);
-}
+  main.setAttribute('data-index', nextIndex.toString());
+  animateMain(currentIndex, nextIndex);
+});
 
-function animateMain(currentElement, nextElement, animationType) {
+// 動きのメイン
+function animateMain(currentIndex, nextIndex) {
+  const currentElement = itemBox[currentIndex - 1];
+  const nextElement = itemBox[nextIndex - 1];
+
   main.innerHTML = '';
   main.style.backgroundImage = 'url(' + nextElement.imgUrl + ')';
 
@@ -88,6 +109,8 @@ function animateMain(currentElement, nextElement, animationType) {
   main.classList.add('expand-animation');
   extra.classList.add('deplete-animation');
 
+  animationType = defineDirection(currentIndex, nextIndex);
+
   if (animationType === 'right') {
     sliderShow.innerHTML = '';
     sliderShow.append(extra);
@@ -99,22 +122,7 @@ function animateMain(currentElement, nextElement, animationType) {
   }
 }
 
-const leftBtn = document.getElementById('1');
-const rightBtn = document.getElementById('2');
-
-const numberBtns = document.querySelectorAll('.btn-number');
-const meter = document.getElementById('meter');
-const clear = document.getElementById('clear');
-const submit = document.getElementById('submit');
-submit.disabled = true;
-meter.innerHTML = 1;
-
-numberBtns.forEach((btn) => {
-  btn.addEventListener('click', function () {
-    meter.innerHTML += btn.innerHTML;
-  });
-});
-
+// submit, clearボタンの切り替え
 function changeDisabledBtn() {
   if (submit.disabled == false) {
     submit.disabled = true;
@@ -125,36 +133,6 @@ function changeDisabledBtn() {
   }
 }
 
-function isNextElement(index) {
-  if (index > itemBox.length) {
-    name.innerHTML = `現在の登録数は${itemBox.length}です`;
-  }
-}
-
-clear.addEventListener('click', function () {
-  changeDisabledBtn();
-  meter.innerHTML = '';
-  warning.innerHTML = '';
-});
-
-submit.addEventListener('click', function () {
-  changeDisabledBtn();
-  const currentIndex = parseInt(main.getAttribute('data-index'));
-  const nextIndex = meter.innerHTML;
-
-  if (nextIndex > itemBox.length) {
-    warning.innerHTML = `現在の登録数は${itemBox.length}です`;
-    console.log(`現在の登録数は${itemBox.length}です`);
-    return;
-  }
-
-  const currentElement = itemBox[currentIndex - 1];
-  const nextElement = itemBox[nextIndex - 1];
-
-  main.setAttribute('data-index', nextIndex.toString());
-  animateMain(currentElement, nextElement, defineDirection(parseInt(currentIndex), parseInt(nextIndex)));
-});
-
 function defineDirection(currentIndex, nextIndex) {
   let rc;
   let lc;
@@ -164,13 +142,6 @@ function defineDirection(currentIndex, nextIndex) {
   } else {
     rc = nextIndex - currentIndex;
     lc = currentIndex + itemBox.length - nextIndex;
-  }
-  if (rc > lc) {
-    console.log(`rc: ${rc}, lc: ${lc}`);
-    console.log('left');
-  } else {
-    console.log(`rc: ${rc}, lc: ${lc}`);
-    console.log('right');
   }
   return rc > lc ? 'left' : 'right';
 }
