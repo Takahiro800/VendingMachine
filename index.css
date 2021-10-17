@@ -19,6 +19,19 @@ div {
       flex-wrap: wrap;
 }
 
+.main__img {
+  height: 300px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  padding: 0 !important;
+  -webkit-transition: all 2s linear;
+  transition: all 2s linear;
+}
+
 .main__left {
   width: 65%;
   margin-right: 5%;
@@ -26,22 +39,6 @@ div {
 
 .main__right {
   width: 30%;
-}
-
-.main__right .window {
-  padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-}
-
-.main__right .window__number {
-  font-size: 30px;
-  padding: 15px 25px;
-  margin-right: 20px;
 }
 
 .main__right .caluclater {
@@ -54,6 +51,51 @@ div {
           justify-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.window {
+  width: 100%;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.window__right {
+  width: 80%;
+}
+
+.window__number {
+  font-size: 30px;
+  padding: 15px 25px;
+  margin-right: 20px;
+}
+
+.window .name, .window .comment {
+  padding: 15px;
+}
+
+.overflow-hiddens {
+  overflow: hidden;
+}
+
+.extra__img {
+  height: 300px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  padding: 0 !important;
+  -webkit-transition: all 2s linear;
+  transition: all 2s linear;
 }
 
 .btn-number {
@@ -70,5 +112,58 @@ div {
   font-size: 30px;
   padding: 15px 20px;
   margin-top: 30px;
+}
+
+button {
+  min-width: 120px;
+}
+
+.btn-wrapper {
+  text-align: center;
+}
+
+.clear {
+  padding: 15px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.meter {
+  padding: 30px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.deplete-animation {
+  -webkit-animation: deplete 1s linear forwards;
+          animation: deplete 1s linear forwards;
+}
+
+.expand-animation {
+  animation: deplete 1s linear reverse forwards;
+}
+
+@-webkit-keyframes deplete {
+  0% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes deplete {
+  0% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 0%;
+    opacity: 0;
+  }
 }
 /*# sourceMappingURL=index.css.map */

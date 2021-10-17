@@ -16,29 +16,37 @@
   <body>
     <div class="container">
       <div class="main">
-        <div class="main__left"></div>
+        <div id="target" class="main__left"></div>
         <div class="main__right">
-          <div class="window">
-            <div class="window__number">7</div>
-            <div class="window__right">
-              <div class="name">CHIPS</div>
-              <div class="price">$4.00</div>
-            </div>
-          </div>
           <div class="caluclater">
-            <div class="btn-number">1</div>
-            <div class="btn-number">2</div>
-            <div class="btn-number">3</div>
-            <div class="btn-number">4</div>
-            <div class="btn-number">5</div>
+            <div id="1" class="btn-number">1</div>
+            <div id="2" class="btn-number">2</div>
+            <div id="3" class="btn-number">3</div>
+            <div id="4" class="btn-number">4</div>
+            <div id="5" class="btn-number">5</div>
             <div class="btn-number">6</div>
             <div class="btn-number">7</div>
             <div class="btn-number">8</div>
             <div class="btn-number">9</div>
           </div>
+          <div class="btn-wrapper">
+            <button id="clear" class="clear">Clear</button>
+          </div>
+          <div class="btn-wrapper">
+            <button id="submit" class="clear">Submit</button>
+          </div>
+          <div id="meter" class="meter">2</div>
+        </div>
+        <div class="window">
+          <div id="number" class="window__number">7</div>
+          <div class="window__right">
+            <div id="name" class="name"></div>
+            <div id="comment" class="comment"></div>
+          </div>
         </div>
       </div>
     </div>
     <script src="./main.js"></script>
+    <script src="./caluculate.js"></script>
   </body>
 </html>
